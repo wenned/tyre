@@ -1,0 +1,131 @@
+<MyTyre>:
+  Screen:
+    GridLayout:
+      cols:2
+      padding: 200
+      Image:
+        source:'logo2.png'
+      BoxLayout:
+        orientation:'vertical'
+        spacing: 15
+        TextInput:
+          id:mt
+          hint_text:'Matricula'
+        TextInput:
+          id:sh
+          hint_text:'Senha'
+          password:True
+        Button:
+          text:'Login'
+          font_size: 20
+          on_release: root.current = 'ty'
+  Log:
+    name: 'ty'
+
+  TyreC:
+    name: 'tyrec'
+  
+  Atualize:
+    name: 'atualize'
+
+  CriBd:
+    name: 'cri'
+
+  Cadastro:
+    name: 'new_c'
+
+<Log>:
+  BoxLayout:
+    orientation: 'vertical'
+    padding: 200
+    spacing: 50
+    Image:
+      source:'logo2.png'
+    Button:
+      text:'Buscar'
+      on_release:app.root.current = 'tyrec'
+    Button:
+      text:'Atualizar'
+      on_release: app.root.current = 'atualize'
+    Button:
+      text:'Sair'
+      on_release: app.stop()
+
+<TyreC>:
+  BoxLayout:
+    orientation: 'vertical'
+    padding: 100
+    spacing: 30
+    ActionBar:
+      ActionView:
+        ActionPrevious:
+          title: 'Consulta Step'
+          on_release: app.root.current = 'ty'
+          on_release: dados_CR.text = ''
+        ActionButton:
+          text:'Sair'
+          on_release:app.stop()
+
+    Label:
+      id: dados_CR
+      text: ''
+      font_size:30
+    BoxLayout:
+      TextInput:
+        id:cr
+        hint_text: 'Digite nº Carreta.'
+
+    BoxLayout:
+      orientation: 'horizontal'
+      Button:
+        id: k
+        text:'Buscar'
+        on_release: root.busc(cr.text)
+
+<Atualize>:
+  BoxLayout:
+    orientation:'vertical'
+    spacing: 30
+    ActionBar:
+      ActionView:
+        ActionPrevious:
+          title: 'Atualizando'
+          on_release: app.root.current = 'ty'
+        ActionButton:
+          text:'Sair'
+          on_release: app.stop()
+    GridLayout:
+      spacing: 20
+      cols:1
+      TextInput:
+        id:ar
+        hint_text:'Nº Carreta'
+      TextInput:
+        id:br
+        hint_text:'Nº Fogo'
+      TextInput:
+        id:cy
+        hint_text:'Data AAAA.MM.DD'
+    Button:
+      text:'Update'
+      font_size: 40
+      on_release:root.buscr(ar.text, br.text, cy.text)
+
+<CriBd>:
+  BoxLayout:
+    orientation:'vertical'
+    spacing: 20
+    Label:
+      text:'Banco de dados nao encontrado, deseja criar.'
+      font_size: 20
+      blod: True
+    Button:
+      text:'Criar'
+      #on_release:
+    Button:
+      text:'Voltar'
+      on_release: app.root.current = 'ty'
+  
+<Cadastro>:
+  Label:
+    text:'Chegou'
