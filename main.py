@@ -21,9 +21,9 @@ class TyreC(Screen):
     
     if len(i)>= len('21000'):
         y = os.path.exists(f'Bancod/{i}.bd')
-       #busca ok 
+     
         if y:
-            self.ids["dados_CR"].text = ConsultaPath.seach_bd(int(y))
+            self.ids["dados_CR"].text = ConsultaPath.seach_bd(int(i))
             self.ids["cr"].text = ''
 
     else:
@@ -41,19 +41,23 @@ class Cadastro(Screen):
 class Atualize(Screen):
     def buscr(self,*args):
         y = self.ids["ar"].text
-        a = os.path.exists(f'Bancod/{y}.bd')
 
+        if len(y) >= len('21000'):
+            a = os.path.exists(f'Bancod/{y}.bd')
 
-        if a:
-            a = self.ids["ar"].text
-            b = self.ids["br"].text
-            c = self.ids["cy"].text
+            if a:
+                a = self.ids["ar"].text
+                b = self.ids["br"].text
+                c = self.ids["cy"].text
 
-            ConsultaPath.inserir(a,b,c)
+                ConsultaPath.inserir(a,b,c)
 
-            self.ids["ar"].text = ''
-            self.ids["br"].text = ''
-            self.ids["cy"].text = ''
+                self.ids["ar"].text = ''
+                self.ids["br"].text = ''
+                self.ids["cy"].text = ''
+            else:
+                ...
+        
         else:
             App.get_running_app().root.current ='cri'
 
