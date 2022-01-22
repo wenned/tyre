@@ -18,18 +18,16 @@ class TyreC(Screen):
 
   def busc(self, *args):
     i = self.ids["cr"].text
-    if i == None:
-        ...
     
-    else:
+    if len(i)>= len('21000'):
         y = os.path.exists(f'Bancod/{i}.bd')
-
+       #busca ok 
         if y:
             self.ids["dados_CR"].text = ConsultaPath.seach_bd(int(y))
             self.ids["cr"].text = ''
 
-        else:
-            App.get_running_app().root.current = 'cri'
+    else:
+        App.get_running_app().root.current = 'cri'
 
 class Log(Screen):
   ...
