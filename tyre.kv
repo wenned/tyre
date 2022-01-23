@@ -18,7 +18,9 @@
         Button:
           text:'Login'
           font_size: 20
-          on_release: root.current = 'ty'
+          on_release: root.current = 'ac'
+
+
   Log:
     name: 'ty'
 
@@ -34,22 +36,46 @@
   Cadastro:
     name: 'new_c'
 
+  Actions:
+    name: 'ac'
+
+<Actions>:
+  GridLayout:
+    cols:2
+    padding: 250
+    spacing: 25
+    Button:
+      text:'Estepes'
+      on_release: app.root.current = 'ty'
+    Button:
+      text:'Tpms'   
+    Button:
+      text:'Pneus'
+    Button:
+      text:'Rodas'
+
+
 <Log>:
   BoxLayout:
     orientation: 'vertical'
     padding: 200
     spacing: 50
-    Image:
-      source:'logo2.png'
+    ActionBar:
+      ActionView:
+        ActionPrevious:
+          title:  'Estepes'
+          on_release: app.root.current = 'ac'
+        ActionButton:
+          text: 'Sair'
+          on_release: app.stop()
+    #Image:
+      #source:'logo2.png'
     Button:
       text:'Buscar'
       on_release:app.root.current = 'tyrec'
     Button:
       text:'Atualizar'
       on_release: app.root.current = 'atualize'
-    Button:
-      text:'Sair'
-      on_release: app.stop()
 
 <TyreC>:
   BoxLayout:

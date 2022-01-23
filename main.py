@@ -38,6 +38,9 @@ class CriBd(Screen):
 class Cadastro(Screen):
   ...
 
+class Actions(Screen):
+  ...
+
 class Atualize(Screen):
     def buscr(self,*args):
         y = self.ids["ar"].text
