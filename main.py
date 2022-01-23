@@ -33,10 +33,24 @@ class Log(Screen):
   ...
 
 class CriBd(Screen):
-  ...
+    ...
 
 class Cadastro(Screen):
-  ...
+    #def __init_(self, **kwargs):
+     #   super().__init__()
+
+    def insertd(self, *args):
+        y = self.ids["cr"].text
+        
+        if len(y)>= len('21000'):
+            vr = ConsultaPath.new_creat(y)
+            l = self.ids["ci"].text
+            i = self.ids["cy"].text
+            ConsultaPath.inserir(y,l,i)
+
+        else:
+            #h= self.CriBD.ids["tl"].text = 'DADOS INVALIDOS!'
+            App.get_running_app().root.current ='cri'
 
 class Actions(Screen):
   ...

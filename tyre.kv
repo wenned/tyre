@@ -141,17 +141,42 @@
   BoxLayout:
     orientation:'vertical'
     spacing: 20
+    padding: 100
     Label:
-      text:'Banco de dados nao encontrado, deseja criar.'
+      id: tl
+      text:'BANCO DE DADOS NAO ENCONTRADO'
       font_size: 20
-      blod: True
     Button:
       text:'Criar'
-      #on_release:
+      on_release:app.root.current = 'new_c'
     Button:
       text:'Voltar'
       on_release: app.root.current = 'ty'
   
 <Cadastro>:
-  Label:
-    text:'Chegou'
+  BoxLayout:
+    orientation: 'vertical'
+    spacing: 20
+    padding: 100
+    ActionBar:
+      ActionView:
+        ActionPrevious:
+          title: 'Inseir Novo Banco dados'
+          on_release: app.root.current = 'ac'
+        ActionButton:
+          text:'Sair'
+          on_release: app.stop()
+    TextInput:
+      id: cr
+      hint_text:'Digite Nº Carreta'
+    TextInput:
+      id: ci
+      hint_text:'Nº Estepe'
+    TextInput:
+      id: cy
+      hint_text:'Data AAAA.MM.DD'
+    Button:
+      text:'Criar'
+      on_release:root.insertd(cr.text, ci.text, cy.text)
+
+

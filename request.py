@@ -41,19 +41,9 @@ Ultima data: {y[3]}''')
       con.close()
 
   def new_creat(n):
-      
-    e = '''
-  A Carreta nao exite, deseja criar novo veiculo?
-  Sim [1] / Não [2].
-  '''
 
-    if newv in '1':
-      print ('Criando banco de dados...')
       con = sqlite3.connect(f'Bancod/{n}.bd')
-      print ('Conectando ao banco de dados ....')
       editor = con.cursor()
-
-      print('Gerando tabelas...')
 
       editor.execute("""
       CREATE TABLE tyre (
@@ -64,6 +54,3 @@ Ultima data: {y[3]}''')
       );
       """)
 
-      fogo = input('Nº Fogo: ')
-      data = input('Data YYYY-MM-DD: ')
-      ConsultaPath.inserir(n, fogo, n, data)
