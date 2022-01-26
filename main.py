@@ -32,12 +32,7 @@ class TyreC(Screen):
 class Log(Screen):
   ...
 
-class CriBd(Screen):
-    ...
-
 class Cadastro(Screen):
-    #def __init_(self, **kwargs):
-     #   super().__init__()
 
     def insertd(self, *args):
         y = self.ids["cr"].text
@@ -48,14 +43,21 @@ class Cadastro(Screen):
             i = self.ids["cy"].text
             ConsultaPath.inserir(y,l,i)
 
+            self.ids["cr"].text = ''
+            self.ids["ci"].text = ''
+            self.ids["cy"].text = ''
+
         else:
-            #h= self.CriBD.ids["tl"].text = 'DADOS INVALIDOS!'
-            App.get_running_app().root.current ='cri'
+            App.get_running_app().root.current = 'cri'
+            
+class CriBd(Screen):
+    ...
 
 class Actions(Screen):
   ...
 
 class Atualize(Screen):
+    
     def buscr(self,*args):
         y = self.ids["ar"].text
 
@@ -77,11 +79,10 @@ class Atualize(Screen):
         
         else:
             App.get_running_app().root.current ='cri'
-
+        
 class Tyre(App):
-
   def build(self):
-  
     return MyTyre()
-   
-Tyre().run()
+
+if __name__ == '__main__':
+    Tyre().run()
