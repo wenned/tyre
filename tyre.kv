@@ -2,7 +2,7 @@
   Screen:
     GridLayout:
       cols:2
-      padding: 200
+      #padding: 200
       Image:
         source:'logo2.png'
       BoxLayout:
@@ -19,31 +19,28 @@
           text:'Login'
           font_size: 20
           on_release: root.current = 'ac'
-
-
   Log:
     name: 'ty'
-
   TyreC:
     name: 'tyrec'
-  
   Atualize:
     name: 'atualize'
-
   CriBd:
     name: 'cri'
-
   Cadastro:
     name: 'new_c'
-
   Actions:
     name: 'ac'
+  Entry_Exit:
+    name: 'entr'
+  Saidap:
+    name: 'sd'
 
 <Actions>:
   GridLayout:
     cols:2
-    padding: 250
-    spacing: 25
+    padding: 60
+    spacing: 60
     Button:
       text:'Estepes'
       on_release: app.root.current = 'ty'
@@ -51,14 +48,14 @@
       text:'Tpms'   
     Button:
       text:'Pneus'
+      on_release: app.root.current = 'entr'
     Button:
       text:'Rodas'
-
 
 <Log>:
   BoxLayout:
     orientation: 'vertical'
-    padding: 200
+    #padding: 200
     spacing: 50
     ActionBar:
       ActionView:
@@ -68,8 +65,6 @@
         ActionButton:
           text: 'Sair'
           on_release: app.stop()
-    #Image:
-      #source:'logo2.png'
     Button:
       text:'Buscar'
       on_release:app.root.current = 'tyrec'
@@ -80,7 +75,7 @@
 <TyreC>:
   BoxLayout:
     orientation: 'vertical'
-    padding: 100
+    #padding: 100
     spacing: 30
     ActionBar:
       ActionView:
@@ -95,7 +90,7 @@
     Label:
       id: dados_CR
       text: ''
-      font_size:30
+      font_size:20
     BoxLayout:
       TextInput:
         id:cr
@@ -141,7 +136,7 @@
   BoxLayout:
     orientation:'vertical'
     spacing: 20
-    padding: 100
+    #padding: 100
     Label:
       id:ss
       text:'BANCO DE DADOS NAO ENCONTRADO'
@@ -157,7 +152,7 @@
   BoxLayout:
     orientation: 'vertical'
     spacing: 20
-    padding: 100
+    #padding: 100
     ActionBar:
       ActionView:
         ActionPrevious:
@@ -178,4 +173,42 @@
     Button:
       text:'Criar'
       on_release:root.insertd(cr.text, ci.text, cy.text)
-
+<Entry_Exit>:
+  BoxLayout:
+    orientation: 'vertical'
+    spacing: 20
+    paddgin: 50
+    ActionBar:
+      ActionView:
+        ActionPrevious:
+          title: ''
+          on_release: app.root.current = 'ac'
+        ActionButton:
+          text: 'Sair'
+          on_release: app.stop()
+    Button:
+      text: 'Saida Pneu'
+      on_release: app.root.current = 'sd'
+    Button:
+      text: 'Entra Pneu'
+    Button:
+      text: 'Relatorio'
+<Saidap>:
+  BoxLayout:
+    orientation: 'vertical'
+    spacing: 20
+    ActionBar:
+      ActionView:
+        ActionPrevious:
+          title: 'Saida de Pneus'
+          on_release: app.root.current = 'ac'
+        ActionButton:
+          text: 'Sair'
+          on_release: app.stop()
+    TextInput:
+      hint_text: 'Nº OS'
+    TextInput:
+      hint_text: 'Nº Fogos'
+    Button:
+      text: 'Enviar'
+      #on_release: root.

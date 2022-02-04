@@ -4,8 +4,8 @@ import os.path
 from kivy.uix.screenmanager import ScreenManager, Screen
 
 
-#from kivy.core.window import Window
-#Window.size = (600, 300)
+from kivy.core.window import Window
+Window.size = (430, 350)
 
 
 class MyTyre(ScreenManager):
@@ -55,6 +55,12 @@ class CriBd(Screen):
 
 class Actions(Screen):
   ...
+
+class Entry_Exit(Screen):
+    ...
+
+class Saidap(Screen):
+    ...
 
 class Atualize(Screen):
     
