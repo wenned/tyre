@@ -37,6 +37,8 @@
     name: 'sd'
   Entrap:
     name: 'enp'
+  Relatorio:
+    name: 'relatorio'
 
 <Actions>:
   GridLayout:
@@ -138,7 +140,6 @@
   BoxLayout:
     orientation:'vertical'
     spacing: 20
-    #padding: 100
     Label:
       id:ss
       text:'BANCO DE DADOS NAO ENCONTRADO'
@@ -154,7 +155,6 @@
   BoxLayout:
     orientation: 'vertical'
     spacing: 20
-    #padding: 100
     ActionBar:
       ActionView:
         ActionPrevious:
@@ -196,6 +196,8 @@
       on_release: app.root.current = 'enp'
     Button:
       text: 'Relatorio'
+      on_release: app.root.current = 'relatorio'
+      on_release: app.root.get_screen('relatorio').addWidget()
 <Saidap>:
   BoxLayout:
     orientation: 'vertical'
@@ -236,3 +238,21 @@
       hint_text: 'Nº Fogo'
     Button:
       text: 'Entrada'
+
+<Relatorio>:
+  BoxLayout:
+    orientation: 'vertical'
+    ActionBar:
+      ActionView:
+        ActionPrevious:
+          title: 'Relatorio Pneus Pendente'
+          on_release: app.root.current = 'entr'
+        ActionButton:
+          text: 'Sair'
+          on_release: app.stop()
+    ScrollView:
+      BoxLayout:
+        id: box
+        orientation: 'vertical'
+        size_hint_y: None
+        height: self.minimum_height

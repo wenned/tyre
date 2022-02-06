@@ -3,7 +3,7 @@ from request import ConsultaPath
 from entry_exit import SettingsTyre
 import os.path
 from kivy.uix.screenmanager import ScreenManager, Screen
-
+from kivy.uix.label import Label
 
 from kivy.core.window import Window
 Window.size = (430, 350)
@@ -85,6 +85,7 @@ class Saidap(Screen):
 class Entrap(Screen):
     ...
 
+
 class Atualize(Screen):
     
     def buscr(self,*args):
@@ -107,7 +108,18 @@ class Atualize(Screen):
                 ...
         else:
             App.get_running_app().root.current ='cri'
-        
+ 
+class Relatorio(Screen):
+
+    def addWidget(self, **kargs):
+
+        dic = dict(SettingsTyre.os_open())
+        key = list(dic.keys())
+
+        for chv in key:
+            e = f'OS: {chv} = {dic[chv]}'
+            self.ids.box.add_widget(Label(text = f'{e}', font_size=12, size_hint_y = None, height= 100)) 
+
 class Tyre(App):
   def build(self):
     return MyTyre()

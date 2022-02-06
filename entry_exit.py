@@ -41,3 +41,25 @@ class SettingsTyre:
                             break
                 else:
                     ...
+
+    def os_open():
+        with open('data.json', 'r') as ty:
+            dice = json.load(ty)
+            y= list(dice.keys())
+        cont = 0
+        dtemp = {}
+
+        for i in y:
+            f = dice[f'{i}'][:]
+            ltemp = []
+
+            for e in f:
+                if len(str(e)) <= len('xxxxx') and len(str(e)) > len('22') :
+                    ltemp.append(e)
+                    dtemp[f'{y[cont]}'] = ltemp
+                else:
+                    ...
+            cont = cont + 1
+
+        return dtemp
+
