@@ -1,45 +1,44 @@
 import json
 from pathlib import Path
 
-def creat_note():
-  dados = {}
-  insert_d = []
-  os = input('nº os: ')
-  for i in range(3):
-    os_x = int(input('nº tyre: '))
-    insert_d.append(os_x)
-  dados[f"{os}"]=insert_d
+class SettingsTyre:
 
-  with open('data.json', 'r') as ty:
-    dice = json.load(ty)
-    dice.update(dados)
+    def creat_note(os, lista):
+        dados = {}
+        insert_d = []
 
-  filePath=Path("data.json")
-  try:
-    filePath.unlink()
-  except OSError as e:
-    print(f"Error:{ e.strerror}")
+        for nu in lista:
+            insert_d.append(nu)
+        dados[f"{os}"]=insert_d
 
-  with open('data.json', 'a') as ty:
-    json.dump(dice, ty)
+        with open('data.json', 'r') as ty:
+            dice = json.load(ty)
+            dice.update(dados)
+        filePath=Path("data.json")
+        try:
+            filePath.unlink()
+        except OSError as e:
+            print(f"Error:{ e.strerror}")
 
-def input_update(x):
+        with open('data.json', 'a') as ty:
+            json.dump(dice, ty)
 
-  with open('data.json', 'r') as ty:
-    dice = json.load(ty)
-  y= dice.keys()
+    def input_update(x):
 
-  for i in y:
-    (dice[f'{i}'][:])
+        with open('data.json', 'r') as ty:
+            dice = json.load(ty)
+        y= dice.keys()
 
-    if x in dice[f'{i}'][:]:
-      for e in range(13):
-        if x == dice[f'{i}'][e]:
-          dice[f"{i}"][e] = str(x)+'entry'
+        for i in y:
+            (dice[f'{i}'][:])
 
-          with open('data.json', 'w') as ty:
-             json.dump(dice, ty)
-          break
-    else:
-      ...
+            if x in dice[f'{i}'][:]:
+                for e in range(13):
+                    if x == dice[f'{i}'][e]:
+                        dice[f"{i}"][e] = str(x)+'entry'
 
+                        with open('data.json', 'w') as ty:
+                            json.dump(dice, ty)
+                        break
+            else:
+                ...

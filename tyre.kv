@@ -206,9 +206,14 @@
           text: 'Sair'
           on_release: app.stop()
     TextInput:
-      hint_text: 'Nº OS'
+      id:os
+      hint_text: 'Nº OS' 
     TextInput:
+      id: li
       hint_text: 'Nº Fogos'
     Button:
+      text: 'Adicionar'
+      on_release: root.criar_l(li.text)
+    Button:
       text: 'Enviar'
-      #on_release: root.
+      on_release: root.criar(os.text)

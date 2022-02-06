@@ -1,5 +1,6 @@
 from kivy.app import App
 from request import ConsultaPath
+from settigns_tyre import SettingsTyre
 import os.path
 from kivy.uix.screenmanager import ScreenManager, Screen
 
@@ -60,7 +61,20 @@ class Entry_Exit(Screen):
     ...
 
 class Saidap(Screen):
-    ...
+    global l
+    l = []
+
+    def criar_l(self, *args):
+        
+        k = self.ids["li"].text
+        l.append(int(k))
+        self.ids["li"].text = '' 
+
+    def criar(self, *args):
+
+        os = self.ids["os"].text
+        SettingsTyre.creat_note(os, l)
+        self.ids["os"].text = ''
 
 class Atualize(Screen):
     
@@ -82,7 +96,6 @@ class Atualize(Screen):
                 self.ids["cy"].text = ''
             else:
                 ...
-        
         else:
             App.get_running_app().root.current ='cri'
         
