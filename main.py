@@ -65,16 +65,22 @@ class Saidap(Screen):
     l = []
 
     def criar_l(self, *args):
-        
-        k = self.ids["li"].text
-        l.append(int(k))
-        self.ids["li"].text = '' 
+        verif = self.ids["li"].text
+        if verif == '':
+            ...
+        else:
+            k = self.ids["li"].text
+            l.append(int(k))
+            self.ids["li"].text = '' 
 
     def criar(self, *args):
-
-        os = self.ids["os"].text
-        SettingsTyre.creat_note(os, l)
-        self.ids["os"].text = ''
+        verif = self.ids["os"].text
+        if verif == '':
+            ...
+        else:
+            os = self.ids["os"].text
+            SettingsTyre.creat_note(os, l)
+            self.ids["os"].text = ''
 
 class Atualize(Screen):
     
