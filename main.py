@@ -1,6 +1,6 @@
 from kivy.app import App
 from request import ConsultaPath
-from settigns_tyre import SettingsTyre
+from entry_exit import SettingsTyre
 import os.path
 from kivy.uix.screenmanager import ScreenManager, Screen
 
@@ -81,6 +81,9 @@ class Saidap(Screen):
             os = self.ids["os"].text
             SettingsTyre.creat_note(os, l)
             self.ids["os"].text = ''
+
+class Entrap(Screen):
+    ...
 
 class Atualize(Screen):
     

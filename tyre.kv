@@ -35,6 +35,8 @@
     name: 'entr'
   Saidap:
     name: 'sd'
+  Entrap:
+    name: 'enp'
 
 <Actions>:
   GridLayout:
@@ -191,6 +193,7 @@
       on_release: app.root.current = 'sd'
     Button:
       text: 'Entra Pneu'
+      on_release: app.root.current = 'enp'
     Button:
       text: 'Relatorio'
 <Saidap>:
@@ -201,7 +204,7 @@
       ActionView:
         ActionPrevious:
           title: 'Saida de Pneus'
-          on_release: app.root.current = 'ac'
+          on_release: app.root.current = 'entr'
         ActionButton:
           text: 'Sair'
           on_release: app.stop()
@@ -217,3 +220,19 @@
     Button:
       text: 'Enviar'
       on_release: root.criar(os.text)
+<Entrap>:
+  BoxLayout:
+    orientation: 'vertical'
+    spacing: 20
+    ActionBar:
+      ActionView:
+        ActionPrevious:
+          title: 'Entrada Pneus'
+          on_release: app.root.current = 'entr'
+        ActionButton:
+          text: 'Sair'
+          on_release: app.stop()
+    TextInput:
+      hint_text: 'Nº Fogo'
+    Button:
+      text: 'Entrada'
