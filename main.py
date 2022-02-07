@@ -83,7 +83,17 @@ class Saidap(Screen):
             self.ids["os"].text = ''
 
 class Entrap(Screen):
-    ...
+    global lit
+    lit = []
+    def listEntry(self, *args):
+        verif = self.ids["nu"].text
+        if verif == '':
+            ...
+        else:
+            nu = self.ids["nu"].text
+            lit.append(int(nu))
+            self.ids["nu"].text = ''
+            SettingsTyre.input_update(lit)
 
 
 class Atualize(Screen):
@@ -119,6 +129,8 @@ class Relatorio(Screen):
         for chv in key:
             e = f'OS: {chv} = {dic[chv]}'
             self.ids.box.add_widget(Label(text = f'{e}', font_size=12, size_hint_y = None, height= 100)) 
+            key.clear()
+            dic.clear()
 
 class Tyre(App):
   def build(self):

@@ -60,6 +60,6 @@ class SettingsTyre:
                 else:
                     ...
             cont = cont + 1
-
+        
         return dtemp
-
+        dtemp.clear()

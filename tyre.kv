@@ -235,9 +235,12 @@
           text: 'Sair'
           on_release: app.stop()
     TextInput:
+      id: nu
       hint_text: 'Nº Fogo'
     Button:
       text: 'Entrada'
+      on_release: root.listEntry(nu.text)
+      on_release: 
 
 <Relatorio>:
   BoxLayout:
