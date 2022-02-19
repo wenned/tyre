@@ -1,9 +1,12 @@
 import json
-from pathlib import Path
+from request import Verify
 
 class SettingsTyre:
 
     def creat_note(os, lista):
+
+      if Verify.verf():
+
         dados = {}
         insert_d = []
 
@@ -14,14 +17,15 @@ class SettingsTyre:
         with open('data.json', 'r') as ty:
             dice = json.load(ty)
             dice.update(dados)
-        filePath=Path("data.json")
-        try:
-            filePath.unlink()
-        except OSError as e:
-            print(f"Error:{ e.strerror}")
 
-        with open('data.json', 'a') as ty:
+      
+
+        with open('data.json', 'w') as ty:
             json.dump(dice, ty)
+      else:
+        with open('data.json', 'a') as ty:
+          ty.write('{}')
+        SettingsTyre.creat_note(os, lista)
 
     def input_update(lista):
 
@@ -43,6 +47,8 @@ class SettingsTyre:
                     ...
 
     def os_open():
+
+      if Verify.verf():
         with open('data.json', 'r') as ty:
             dice = json.load(ty)
             y= list(dice.keys())
@@ -63,3 +69,7 @@ class SettingsTyre:
         
         return dtemp
         dtemp.clear()
+      else:
+        with open('data.json', 'a') as ty:
+          ty.write('{}')
+          ty.close()

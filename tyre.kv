@@ -185,6 +185,7 @@
         ActionPrevious:
           title: ''
           on_release: app.root.current = 'ac'
+          on_release: app.destroy_settings()
         ActionButton:
           text: 'Sair'
           on_release: app.stop()
@@ -240,7 +241,9 @@
     Button:
       text: 'Entrada'
       on_release: root.listEntry(nu.text)
-      on_release: 
+    MDRoundFlatIconButton:
+      icon: "android"
+      text: "MDROUNDFLATICONBUTTON" 
 
 <Relatorio>:
   BoxLayout:
@@ -250,6 +253,7 @@
         ActionPrevious:
           title: 'Relatorio Pneus Pendente'
           on_release: app.root.current = 'entr'
+          #on_release: app.destroy_settings('relatorio')
         ActionButton:
           text: 'Sair'
           on_release: app.stop()
@@ -259,3 +263,4 @@
         orientation: 'vertical'
         size_hint_y: None
         height: self.minimum_height
+

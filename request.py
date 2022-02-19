@@ -1,11 +1,17 @@
 import os.path
 import sqlite3
 
+class Verify:
+
+  def verf():
+    e= os.path.isfile("data.json")
+    return e
+
 class ConsultaPath:
    
   def inserir(w, y, l):
 
-      con = sqlite3.connect(f'Bancod/{w}.bd')
+      con = sqlite3.connect(f'{w}.bd')
       editor = con.cursor()
 
       con.execute("""
@@ -18,7 +24,7 @@ class ConsultaPath:
 
   def seach_bd(i):
 
-      con = sqlite3.connect(f'Bancod/{i}.bd')
+      con = sqlite3.connect(f'{i}.bd')
       editor = con.cursor()
     
       r = editor.execute(
@@ -42,7 +48,7 @@ Ultima data: {y[3]}''')
 
   def new_creat(n):
 
-      con = sqlite3.connect(f'Bancod/{n}.bd')
+      con = sqlite3.connect(f'{n}.bd')
       editor = con.cursor()
 
       editor.execute("""
