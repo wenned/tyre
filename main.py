@@ -6,7 +6,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.label import Label
 
 from kivy.core.window import Window
-Window.size = (430, 350)
+Window.size = (300, 600)
 
 
 class MyTyre(ScreenManager):
