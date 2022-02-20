@@ -1,6 +1,5 @@
 <MyTyre>:
   Screen:
-    spaccing: 100
     Image:
       source: 'logo2.png'
       size_hint_y: None
@@ -45,20 +44,26 @@
     name: 'relatorio'
 
 <Actions>:
-  GridLayout:
-    cols:2
-    padding: 60
-    spacing: 60
-    Button:
-      text:'Estepes'
-      on_release: app.root.current = 'ty'
-    Button:
-      text:'Tpms'   
-    Button:
-      text:'Pneus'
-      on_release: app.root.current = 'entr'
-    Button:
-      text:'Rodas'
+  Image:
+    source: 'ac.png'
+  Button:
+    text:'Estepes'
+    size_hint: 0.7,0.07
+    pos_hint: {'center_x': 0.5,'center_y': 0.7}
+    on_release: app.root.current = 'ty'
+  Button:
+    text:'Tpms'
+    size_hint: 0.7,0.07
+    pos_hint: {'center_x': 0.5,'center_y': 0.6}   
+  Button:
+    text:'Pneus'
+    size_hint: 0.7,0.07
+    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+    on_release: app.root.current = 'entr'
+  Button:
+    size_hint: 0.7,0.07
+    pos_hint: {'center_x': 0.5,'center_y': 0.4}
+    text:'Rodas'
 
 <Log>:
   BoxLayout:
@@ -147,7 +152,7 @@
     Label:
       id:ss
       text:'BANCO DE DADOS NAO ENCONTRADO'
-      font_size: 20
+      font_size: 15
     Button:
       text:'Criar'
       on_release:app.root.current = 'new_c'

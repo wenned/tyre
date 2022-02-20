@@ -1,5 +1,5 @@
 from kivy.app import App
-from request import ConsultaPath
+from request import ConsultaPath, Verify
 from entry_exit import SettingsTyre
 import os.path
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -21,7 +21,7 @@ class TyreC(Screen):
     i = self.ids["cr"].text
     
     if len(i)>= len('21000'):
-        y = os.path.exists(f'Bancod/{i}.bd')
+        y = os.path.exists(f'{i}.bd')
      
         if y:
             self.ids["dados_CR"].text = ConsultaPath.seach_bd(int(i))
@@ -81,6 +81,8 @@ class Saidap(Screen):
             os = self.ids["os"].text
             SettingsTyre.creat_note(os, l)
             self.ids["os"].text = ''
+    def limp(self):
+        l.clear()
 
 class Entrap(Screen):
     global lit
@@ -102,7 +104,7 @@ class Atualize(Screen):
         y = self.ids["ar"].text
 
         if len(y) >= len('21000'):
-            a = os.path.exists(f'Bancod/{y}.bd')
+            a = os.path.exists(f'{y}.bd')
 
             if a:
                 a = self.ids["ar"].text
@@ -123,14 +125,17 @@ class Relatorio(Screen):
 
     def addWidget(self, **kargs):
 
-        dic = dict(SettingsTyre.os_open())
-        key = list(dic.keys())
+        if Verify.verf():
+            dic = dict(SettingsTyre.os_open())
+            key = list(dic.keys())
 
-        for chv in key:
-            e = f'OS: {chv} = {dic[chv]}'
-            self.ids.box.add_widget(Label(text = f'{e}', font_size=12, size_hint_y = None, height= 100)) 
+            for chv in key:
+                e = f'OS: {chv} = {dic[chv]}'
+                self.ids.box.add_widget(Label(text = f'{e}', font_size=12, size_hint_y = None, height= 100)) 
             key.clear()
             dic.clear()
+        else:
+            self.ids.box.add_widget(Label(text='INFORMAÇOES NAO ENCONTRADA!', font_size=15, size_hint_y = None, center_y = 0.5))
 
 class Tyre(App):
   def build(self):
