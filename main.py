@@ -21,10 +21,13 @@ class TyreC(Screen):
     i = self.ids["cr"].text
     
     if len(i)>= len('21000'):
-        y = os.path.exists(f'{i}.bd')
-     
-        if y:
-            self.ids["dados_CR"].text = ConsultaPath.seach_bd(int(i))
+
+        if Verify.verf_on(i):
+            self.ids["dados_CR"].text = ConsultaPath.seach_bd(i)
+            self.ids["cr"].text = ''
+
+        else:
+            App.get_running_app().root.current = 'cri'
             self.ids["cr"].text = ''
 
     else:
@@ -39,14 +42,14 @@ class Cadastro(Screen):
         y = self.ids["cr"].text
         
         if len(y)>= len('21000'):
-            vr = ConsultaPath.new_creat(y)
+
+            y = self.ids["cr"].text
             l = self.ids["ci"].text
-            i = self.ids["cy"].text
-            ConsultaPath.inserir(y,l,i)
+
+            ConsultaPath.new_creat(y,l)
 
             self.ids["cr"].text = ''
             self.ids["ci"].text = ''
-            self.ids["cy"].text = ''
 
         else:
             App.get_running_app().root.current = 'cri'
@@ -101,23 +104,21 @@ class Entrap(Screen):
 class Atualize(Screen):
     
     def buscr(self,*args):
-        y = self.ids["ar"].text
+        c = self.ids["ar"].text
 
-        if len(y) >= len('21000'):
-            a = os.path.exists(f'{y}.bd')
+        if len(c) >= len('21000'):
 
-            if a:
-                a = self.ids["ar"].text
-                b = self.ids["br"].text
-                c = self.ids["cy"].text
+            if Verify.verf_on(c):
+                c = self.ids["ar"].text
+                f = self.ids["br"].text
 
-                ConsultaPath.inserir(a,b,c)
+                ConsultaPath.inserir(c,f)
 
                 self.ids["ar"].text = ''
                 self.ids["br"].text = ''
-                self.ids["cy"].text = ''
             else:
-                ...
+                App.get_running_app().root.current = 'cri'
+
         else:
             App.get_running_app().root.current ='cri'
  

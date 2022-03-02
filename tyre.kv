@@ -137,13 +137,10 @@
       TextInput:
         id:br
         hint_text:'Nº Fogo'
-      TextInput:
-        id:cy
-        hint_text:'Data AAAA.MM.DD'
     Button:
       text:'Update'
       font_size: 40
-      on_release:root.buscr(ar.text, br.text, cy.text)
+      on_release:root.buscr(ar.text, br.text)
 
 <CriBd>:
   BoxLayout:
@@ -178,12 +175,9 @@
     TextInput:
       id: ci
       hint_text:'Nº Estepe'
-    TextInput:
-      id: cy
-      hint_text:'Data AAAA.MM.DD'
     Button:
       text:'Criar'
-      on_release:root.insertd(cr.text, ci.text, cy.text)
+      on_release:root.insertd(cr.text, ci.text)
 <Entry_Exit>:
   BoxLayout:
     orientation: 'vertical'

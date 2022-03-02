@@ -1,5 +1,7 @@
 import os.path
-import sqlite3
+import json
+import requests
+from datetime import date
 
 class Verify:
 
@@ -7,56 +9,51 @@ class Verify:
     e= os.path.isfile("data.json")
     return e
 
+  def verf_on(i):
+      requisicao = requests.get("https://tyre-47d56-default-rtdb.firebaseio.com/.json?auth=O5ak0iZKz6iGaFLZ9559lm5AKVoqRGyjZjFD4Lb0")
+      sr = (requisicao.json())
+
+      for key in sr.keys():
+          if sr[key]["Cart"] == str(i):
+              return True
+          else:
+              ...
+
 class ConsultaPath:
    
-  def inserir(w, y, l):
+  def inserir(c, f):
+      requisicao = requests.get("https://tyre-47d56-default-rtdb.firebaseio.com/.json?auth=O5ak0iZKz6iGaFLZ9559lm5AKVoqRGyjZjFD4Lb0")
+      sr = (requisicao.json())
 
-      con = sqlite3.connect(f'{w}.bd')
-      editor = con.cursor()
+      for key in sr.keys():
+          if sr[key]["Cart"] == str(c):
+              data = {}
+              data["Fire"] = f
+              data["Date"] = str(date.today())
 
-      con.execute("""
-      INSERT INTO tyre (fogo, carreta, data)
-      VALUES (?, ?, ?)
-      """,(y, w, l))
-      
-      con.commit()
-      con.close()
+              key_url = requests.patch(f"https://tyre-47d56-default-rtdb.firebaseio.com/{key}.json?auth=O5ak0iZKz6iGaFLZ9559lm5AKVoqRGyjZjFD4Lb0", data=json.dumps(data))
+
 
   def seach_bd(i):
-
-      con = sqlite3.connect(f'{i}.bd')
-      editor = con.cursor()
+      requisicao = requests.get("https://tyre-47d56-default-rtdb.firebaseio.com/.json?auth=O5ak0iZKz6iGaFLZ9559lm5AKVoqRGyjZjFD4Lb0")
+      sr = (requisicao.json())
+      for key in sr.keys():
+          if sr[key]["Cart"] == i:
+              dice = f"""
+            CARRETA : {sr[key]["Cart"]}
+            Nº FOGO : {sr[key]["Fire"]}
+            DATA    : {sr[key]["Date"]}
+                  """
+              return dice
     
-      r = editor.execute(
-      'SELECT * FROM tyre WHERE carreta = ?', (i,))
-      count = 0
-      for row in r.fetchall():
-            count += 1
- 
-      e = editor.execute('SELECT * FROM tyre WHERE carreta = ?', (i,))
-      if e.fetchone()[2] == i:
-          e = editor.execute(
-          'SELECT * FROM tyre WHERE id = ?', (count,))
-          y = e.fetchall()[0]
 
-      f = (f'''Carreta: {y[2]}
-Nº Fogo:  {y[1]}
-Ultima data: {y[3]}''')
-      return f
+  def new_creat(c, f):
+      data = {}
+      
+      data["Cart"] = c
+      data["Fire"] = f
+      data["Date"] = str(date.today())
 
-      con.close()
+      requisicao = requests.post("https://tyre-47d56-default-rtdb.firebaseio.com/.json?auth=O5ak0iZKz6iGaFLZ9559lm5AKVoqRGyjZjFD4Lb0", data=json.dumps(data))
 
-  def new_creat(n):
-
-      con = sqlite3.connect(f'{n}.bd')
-      editor = con.cursor()
-
-      editor.execute("""
-      CREATE TABLE tyre (
-      id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-      fogo INTEGER,
-      carreta INTERGER,
-      data DATE NOT NULL
-      );
-      """)
 
