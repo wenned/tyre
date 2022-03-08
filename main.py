@@ -1,4 +1,4 @@
-from kivy.app import App
+from kivymd.app import MDApp
 from request import ConsultaPath, Verify
 from entry_exit import SettingsTyre
 import os.path
@@ -27,11 +27,11 @@ class TyreC(Screen):
             self.ids["cr"].text = ''
 
         else:
-            App.get_running_app().root.current = 'cri'
+            MDApp.get_running_app().root.current = 'cri'
             self.ids["cr"].text = ''
 
     else:
-        App.get_running_app().root.current = 'cri'
+        MDApp.get_running_app().root.current = 'cri'
 
 class Log(Screen):
   ...
@@ -52,7 +52,7 @@ class Cadastro(Screen):
             self.ids["ci"].text = ''
 
         else:
-            App.get_running_app().root.current = 'cri'
+            MDApp.get_running_app().root.current = 'cri'
             
 class CriBd(Screen):
     ...
@@ -117,10 +117,10 @@ class Atualize(Screen):
                 self.ids["ar"].text = ''
                 self.ids["br"].text = ''
             else:
-                App.get_running_app().root.current = 'cri'
+                MDApp.get_running_app().root.current = 'cri'
 
         else:
-            App.get_running_app().root.current ='cri'
+            MDApp.get_running_app().root.current ='cri'
  
 class Relatorio(Screen):
 
@@ -138,8 +138,11 @@ class Relatorio(Screen):
         else:
             self.ids.box.add_widget(Label(text='INFORMAÇOES NAO ENCONTRADA!', font_size=15, size_hint_y = None, center_y = 0.5))
 
-class Tyre(App):
+class Tyre(MDApp):
   def build(self):
+    self.theme_cls.primary_palette = 'Cyan'
+    self.theme_cls.theme_style = 'Dark'
+
     return MyTyre()
 
 if __name__ == '__main__':
